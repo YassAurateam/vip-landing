@@ -170,50 +170,263 @@ const PodiumInstanced: React.FC<{ count: number; radius: number }> = ({ count, r
 }
 
 // ============================================================================
-// FLOATING PRODUCT DISPLAYS
+// FLOATING PRODUCT DISPLAYS WITH HYPER-LUXURY PLACEHOLDER PRODUCTS
 // PERFORMANCE: Uses @react-three/drei's Float component with optimized settings
+// Products use MeshPhysicalMaterial for expensive glass/ceramic look
 // ============================================================================
+
+/**
+ * LuxuryFragranceBottle - Procedural high-end perfume bottle
+ * Uses CylinderGeometry with MeshPhysicalMaterial for glass/ceramic effect
+ */
+const LuxuryFragranceBottle: React.FC<{ colorType: 'gold' | 'red' }> = ({ colorType }) => {
+  const mainColor = colorType === 'gold' ? COLORS.luxuryGold : COLORS.fireRed
+  const accentColor = colorType === 'gold' ? COLORS.obsidianBlack : COLORS.matteBlack
+  
+  return (
+    <group>
+      {/* Bottle body - sleek cylinder */}
+      <mesh castShadow receiveShadow position={[0, 0.4, 0]}>
+        <cylinderGeometry args={[0.15, 0.18, 0.6, 16]} />
+        <meshPhysicalMaterial
+          color={accentColor}
+          roughness={0.15}
+          metalness={0.7}
+          clearcoat={1.0}
+          clearcoatRoughness={0.05}
+          transmission={0.1}
+          thickness={0.5}
+          envMapIntensity={2.0}
+        />
+      </mesh>
+      
+      {/* Bottle neck */}
+      <mesh castShadow receiveShadow position={[0, 0.85, 0]}>
+        <cylinderGeometry args={[0.08, 0.1, 0.2, 16]} />
+        <meshPhysicalMaterial
+          color={mainColor}
+          roughness={0.2}
+          metalness={0.9}
+          clearcoat={0.8}
+          clearcoatRoughness={0.1}
+        />
+      </mesh>
+      
+      {/* Bottle cap - luxury gold/red accent */}
+      <mesh castShadow receiveShadow position={[0, 1.05, 0]}>
+        <cylinderGeometry args={[0.1, 0.1, 0.15, 16]} />
+        <meshPhysicalMaterial
+          color={mainColor}
+          roughness={0.1}
+          metalness={1.0}
+          clearcoat={1.0}
+          clearcoatRoughness={0.02}
+          emissive={mainColor}
+          emissiveIntensity={0.15}
+        />
+      </mesh>
+      
+      {/* Subtle glow ring at base */}
+      <mesh position={[0, 0.1, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <ringGeometry args={[0.18, 0.22, 32]} />
+        <meshBasicMaterial
+          color={mainColor}
+          transparent
+          opacity={0.4}
+          blending={THREE.AdditiveBlending}
+        />
+      </mesh>
+    </group>
+  )
+}
+
+/**
+ * LuxuryWatchCase - Procedural high-end watch presentation box
+ * Uses BoxGeometry with beveled edges via ChamferBox concept
+ */
+const LuxuryWatchCase: React.FC<{ colorType: 'gold' | 'red' }> = ({ colorType }) => {
+  const mainColor = colorType === 'gold' ? COLORS.luxuryGold : COLORS.fireRed
+  const caseColor = colorType === 'gold' ? COLORS.obsidianBlack : COLORS.obsidianBlack
+  
+  return (
+    <group>
+      {/* Watch case base - sharp elegant box */}
+      <mesh castShadow receiveShadow position={[0, 0.15, 0]}>
+        <boxGeometry args={[0.5, 0.3, 0.4, 4, 4, 4]} />
+        <meshPhysicalMaterial
+          color={caseColor}
+          roughness={0.25}
+          metalness={0.6}
+          clearcoat={0.9}
+          clearcoatRoughness={0.08}
+        />
+      </mesh>
+      
+      {/* Watch case lid - slightly raised */}
+      <mesh castShadow receiveShadow position={[0, 0.35, 0]}>
+        <boxGeometry args={[0.52, 0.08, 0.42, 4, 4, 4]} />
+        <meshPhysicalMaterial
+          color={mainColor}
+          roughness={0.15}
+          metalness={0.95}
+          clearcoat={1.0}
+          clearcoatRoughness={0.03}
+          emissive={mainColor}
+          emissiveIntensity={0.1}
+        />
+      </mesh>
+      
+      {/* Watch face placeholder - glowing disc */}
+      <mesh castShadow receiveShadow position={[0, 0.42, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.12, 0.12, 0.02, 32]} />
+        <meshPhysicalMaterial
+          color={COLORS.obsidianBlack}
+          roughness={0.1}
+          metalness={0.8}
+          clearcoat={0.8}
+        />
+      </mesh>
+      
+      {/* Watch hands accent - fire red or gold line */}
+      <mesh position={[0, 0.43, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <planeGeometry args={[0.2, 0.015]} />
+        <meshBasicMaterial color={mainColor} toneMapped={false} />
+      </mesh>
+      
+      {/* Glowing edge ring */}
+      <mesh position={[0, 0.15, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <ringGeometry args={[0.25, 0.27, 32]} />
+        <meshBasicMaterial
+          color={mainColor}
+          transparent
+          opacity={0.3}
+          blending={THREE.AdditiveBlending}
+        />
+      </mesh>
+    </group>
+  )
+}
+
+/**
+ * LuxuryCosmeticJar - Procedural high-end cream/jar container
+ * Uses CylinderGeometry with elegant proportions
+ */
+const LuxuryCosmeticJar: React.FC<{ colorType: 'gold' | 'red' }> = ({ colorType }) => {
+  const mainColor = colorType === 'gold' ? COLORS.luxuryGold : COLORS.fireRed
+  const jarColor = colorType === 'gold' ? COLORS.matteBlack : COLORS.obsidianBlack
+  
+  return (
+    <group>
+      {/* Jar body */}
+      <mesh castShadow receiveShadow position={[0, 0.25, 0]}>
+        <cylinderGeometry args={[0.2, 0.22, 0.4, 24]} />
+        <meshPhysicalMaterial
+          color={jarColor}
+          roughness={0.2}
+          metalness={0.5}
+          clearcoat={0.85}
+          clearcoatRoughness={0.1}
+          transmission={0.05}
+          thickness={0.3}
+        />
+      </mesh>
+      
+      {/* Jar lid - luxury metallic */}
+      <mesh castShadow receiveShadow position={[0, 0.52, 0]}>
+        <cylinderGeometry args={[0.22, 0.22, 0.12, 24]} />
+        <meshPhysicalMaterial
+          color={mainColor}
+          roughness={0.12}
+          metalness={0.98}
+          clearcoat={1.0}
+          clearcoatRoughness={0.02}
+          emissive={mainColor}
+          emissiveIntensity={0.12}
+        />
+      </mesh>
+      
+      {/* Decorative band on lid */}
+      <mesh position={[0, 0.52, 0]}>
+        <torusGeometry args={[0.22, 0.02, 16, 32]} />
+        <meshPhysicalMaterial
+          color={colorType === 'gold' ? COLORS.obsidianBlack : COLORS.matteBlack}
+          roughness={0.3}
+          metalness={0.7}
+        />
+      </mesh>
+      
+      {/* Base glow */}
+      <mesh position={[0, 0.02, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <circleGeometry args={[0.23, 32]} />
+        <meshBasicMaterial
+          color={mainColor}
+          transparent
+          opacity={0.25}
+          blending={THREE.AdditiveBlending}
+        />
+      </mesh>
+    </group>
+  )
+}
+
 const FloatingProducts: React.FC = () => {
-  const productPositions = useMemo(() => {
-    const positions: [number, number, number][] = []
-    for (let i = 0; i < 6; i++) {
-      const angle = (i / 6) * Math.PI * 2
-      positions.push([
-        Math.cos(angle) * 5,
-        1 + Math.random() * 2,
-        Math.sin(angle) * 5,
-      ])
+  const productConfigs = useMemo(() => {
+    const configs: Array<{
+      position: [number, number, number]
+      type: 'fragrance' | 'watch' | 'cosmetic'
+      colorType: 'gold' | 'red'
+      rotationSpeed: number
+    }> = []
+    
+    for (let i = 0; i < 12; i++) {
+      const angle = (i / 12) * Math.PI * 2
+      const radialDistance = 5 + (i % 3) * 1.5 // Three rings
+      
+      const types: ('fragrance' | 'watch' | 'cosmetic')[] = ['fragrance', 'watch', 'cosmetic']
+      const colorTypes: ('gold' | 'red')[] = ['gold', 'red']
+      
+      configs.push({
+        position: [
+          Math.cos(angle) * radialDistance,
+          1.5 + (i % 4) * 0.3,
+          Math.sin(angle) * radialDistance,
+        ],
+        type: types[i % 3],
+        colorType: colorTypes[i % 2],
+        rotationSpeed: 0.2 + Math.random() * 0.3,
+      })
     }
-    return positions
+    
+    return configs
   }, [])
   
   return (
     <>
-      {productPositions.map((pos, i) => (
+      {productConfigs.map((config, i) => (
         <Float
           key={i}
-          speed={CONFIG.floatSpeed}
-          rotationIntensity={CONFIG.floatIntensity}
+          speed={CONFIG.floatSpeed * config.rotationSpeed}
+          rotationIntensity={CONFIG.floatIntensity * 0.5}
           floatIntensity={CONFIG.floatIntensity}
         >
-          {/* Abstract luxury product placeholder - replace with GLTF models */}
-          <group position={pos}>
-            <mesh castShadow receiveShadow>
-              <octahedronGeometry args={[0.3, 0]} />
-              <meshStandardMaterial
-                color={i % 2 === 0 ? '#D4AF37' : '#FF1E00'}
-                roughness={0.2}
-                metalness={0.9}
-                emissive={i % 2 === 0 ? '#D4AF37' : '#FF1E00'}
-                emissiveIntensity={0.3}
-              />
-            </mesh>
-            {/* Subtle glow effect */}
+          <group position={config.position}>
+            {/* Product based on type */}
+            {config.type === 'fragrance' && (
+              <LuxuryFragranceBottle colorType={config.colorType} />
+            )}
+            {config.type === 'watch' && (
+              <LuxuryWatchCase colorType={config.colorType} />
+            )}
+            {config.type === 'cosmetic' && (
+              <LuxuryCosmeticJar colorType={config.colorType} />
+            )}
+            
+            {/* Subtle accent light matching product color */}
             <pointLight
-              color={i % 2 === 0 ? '#D4AF37' : '#FF1E00'}
-              intensity={0.5}
-              distance={2}
-              decay={2}
+              color={config.colorType === 'gold' ? COLORS.luxuryGold : COLORS.fireRed}
+              intensity={0.3}
+              distance={1.5}
+              decay={2.5}
             />
           </group>
         </Float>

@@ -1,1 +1,604 @@
-Nothing needs to be added to .gitignore since only source files (.tsx) were added and no build artifacts, dependencies, or temporary files are present in the changes.
+```gitignore
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+*.js.map
+*.tsbuildinfo
+
+# Environment variables
+.env
+.env.local
+*.env.*
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Temp files
+*.tmp
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+.Python
+*.egg-info/
+.eggs/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.tox/
+.coverage
+nosetests.xml
+.nox/
+.hypothesis/
+
+# Node.js
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+node_modules/
+dist/
+build/
+.next/
+.nuxt/
+public/dist/
+*.min.js
+*.min.css
+
+# Compiled and binary files
+*.exe
+*.dll
+*.so
+*.a
+*.o
+*.obj
+*.out
+*.class
+*.jar
+*.war
+*.ear
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Archives
+*.zip
+*.tar.*
+*.rar
+*.7z
+*.gz
+*.bz2
+*.xz
+*.tgz
+*.tbz2
+*.txz
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+
+# IDE specific
+.vs/
+.vsc/
+.vscode-test/
+.settings/
+.project
+.classpath
+.pydevproject
+
+# Testing
+*.coverage
+coverage.xml
+junit.xml
+test-results/
+.nyc_output/
+
+# Documentation
+docs/_build/
+docs/build/
+
+# Distribution / packaging
+*.gem
+*.egg
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.cover/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask
+instance/
+.webassets-cache
+
+# Ruby
+*.gem
+*.rbc
+.bundle/
+.config/heap/config.yml
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.tar.gz
+hs_err_pid*
+
+# C#
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+MonoBleedingEdge/
+
+# C++
+*.o
+*.obj
+*.exe
+*.pdb
+*.lib
+*.a
+*.la
+*.lo
+*.gch
+*.pch
+*.ilk
+*.map
+*.manifest
+*.exp
+*.metagen
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.libs/
+*.tar.gz
+
+# Rust
+target/
+Cargo.lock
+
+# Swift
+*.xcodeproj
+*.xcworkspace
+*.swiftpm
+
+# Kotlin
+*.iml
+*.ipr
+*.iws
+*.kotlin_metadata
+
+# Scala
+*.class
+*.jar
+*.war
+*.ear
+*.tar.gz
+.sbt/
+lib_managed/
+src_managed/
+target/
+
+# Gradle
+.gradle/
+build/
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# Web
+public/dist/
+public/build/
+dist/
+build/
+*.min.js
+*.min.css
+
+# Vue
+dist/
+build/
+*.vue.zip
+.vuepress/dist
+output.css
+
+# Angular
+dist/
+build/
+.angular/
+
+# React
+build/
+dist/
+*.js.map
+*.tsbuildinfo
+
+# Svelte
+build/
+dist/
+*.css.map
+
+# TypeScript
+*.tsbuildinfo
+dist/
+build/
+
+# Bower
+bower_components/
+
+# Composer
+vendor/
+
+# Laravel
+bootstrap/cache/
+storage/
+.env
+
+# Symfony
+var/
+app/cache/
+app/logs/
+vendor/
+
+# WordPress
+wp-content/cache/
+wp-content/uploads/
+
+# Magento
+var/
+generated/
+pub/static/_cache/
+app/etc/config.php
+app/etc/env.php
+
+# Drupal
+sites/default/files/
+drush-backups/
+*.settings.php
+.settings.php
+
+# Jenkins
+*.jpi
+*.hpi
+*.core
+jenkins/
+jobs/*/builds/*/archive/
+.last-built-changes
+.last-scm-check
+.node-version
+ruby_version
+
+# Travis CI
+.travis.yml
+.travis/
+
+# CircleCI
+.circleci/
+
+# GitHub
+.github/
+
+# GitLab CI
+.gitlab-ci.yml
+
+# AppVeyor
+.appveyor.yml
+
+# TeamCity
+.teamcity/
+
+# Codeship
+codeship-services.yml
+codeship-steps.yml
+
+# Docker
+Dockerfile~
+docker-compose*.yml~
+
+# Vagrant
+.vagrant/
+vagrant-*.out
+vagrant-*.err
+
+# VirtualEnv
+venv/
+ENV/
+env/
+.venv/
+.env/
+env.bak/
+venv.bak/
+
+# PyCharm
+.idea/
+
+# Eclipse
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+
+# Visual Studio Code
+.vscode/
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Nano
+.nano_history
+
+# Atom
+.atom/
+
+# NetBeans
+nbproject/
+build/
+dist/
+nbbuild/
+nbdist/
+.netbeans-vars.mk
+
+# Code::Blocks
+*.depend
+*.layout
+*.cbp
+
+# Dev-C++
+*.dev
+
+# Qt Creator
+*.pro.user
+*.pro.user.*
+*.qbs.user
+*.qbs.user.*
+*.moc
+*.moc.cpp
+*.qm
+*.prl
+*.pri
+*.orig
+*.rej
+*.user
+*.files
+*.includes
+*.Makefile
+*.Makefile.In
+*.mk
+*.mk.In
+*.in
+*.out
+*.app
+*.app.dSYM
+*.app.dSYM/*
+*.app.dSYM/Contents/
+*.app.dSYM/Contents/Resources/
+*.app.dSYM/Contents/Resources/DWARF/
+*.app.dSYM/Contents/Info.plist
+
+# CLion
+cmake-build-*/
+
+# Android Studio
+*.iml
+*.ipr
+*.iws
+*.hpp
+*.cpp
+*.cxx
+*.cc
+*.c
+*.java
+*.class
+*.jar
+*.war
+*.ear
+*.tar.gz
+.gradle/
+build/
+local.properties
+gen/
+out/
+captures/
+.lint/
+.cxx/
+.externalNativeBuild/
+.cmake/
+.externalToolBuilders/
+.settings/
+.idea/
+*.ap_
+*.apk
+*.apks
+*.aab
+*.dex
+*.so
+*.jar
+*.class
+*.aar
+*.keystore
+*.jks
+*.properties
+*.xml
+*.yml
+*.yaml
+*.json
+*.txt
+*.md
+*.gradle
+*.pro
+*.rc
+*.bat
+*.sh
+*.cmd
+*.ps1
+*.rb
+*.pl
+*.pm
+*.py
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.libs/
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
+*.zip
+*.rar
+*.7z
+*.gz
+*.bz2
+*.xz
+*.tgz
+*.tbz2
+*.txz
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+
+# Xcode
+*.xcodeproj
+*.xcworkspace
+*.pbxuser
+*.mode1v3
+*.perspectivev3
+*.xcuserstate
+*.xcscmblueprint
+*.moved-aside
+*.xccheckout
+DerivedData/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+*.dSYM/
+*.lproj/
+*.lproj/*/
+*.lproj/*.strings
+*.lproj/*.storyboard
+*.lproj/*.xib
+*.lproj/*.nib
+*.lproj/*.plist
+*.lproj/*.xc
+*.lproj/*.h
+*.lproj/*.m
+*.lproj/*.mm
+*.lproj/*.cpp
+*.lproj/*.cxx
+*.lproj/*.cc
+*.lproj/*.c
+*.lproj/*.swift
+*.lproj/*.java
+*.lproj/*.class
+*.lproj/*.jar
+*.lproj/*.war
+*.lproj/*.ear
+*.lproj/*.tar.gz
+*.lproj/*.zip
+*.lproj/*.rar
+*.lproj/*.7z
+*.lproj/*.gz
+*.lproj/*.bz2
+*.lproj/*.xz
+*.lproj/*.tgz
+*.lproj/*.tbz2
+*.lproj/*.txz
+*.lproj/*.zst
+*.lproj/*.lz4
+*.lproj/*.lzh
+*.lproj/*.cab
+*.lproj/*.arj
+*.lproj/*.rpm
+*.lproj/*.deb
+*.lproj/*.Z
+*.lproj/*.lz
+*.lproj/*.lzo
+```
